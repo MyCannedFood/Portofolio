@@ -6,7 +6,7 @@ const Projects = () => {
             title: "Lions Website",
             description: "Member management platform with custom admin dashboard.",
             tech: ["Laravel", "MySQL", "Tailwind"],
-            className: "md:col-span-2 md:row-span-1",
+            className: "md:col-span-2 md:row-span-2",
             color: "bg-blue-500/10",
             link: "https://github.com/Jopras21/UAS_WebPro_LIONS"
         },
@@ -14,7 +14,7 @@ const Projects = () => {
             title: "Cinematch",
             description: "Personalized movie recommendation Android app.",
             tech: ["Kotlin", "Firebase", "Jetpack Compose"],
-            className: "md:col-span-1 md:row-span-1",
+            className: "md:col-span-1 md:row-span-2",
             color: "bg-purple-500/10",
             link: "https://github.com/calvinnnleo/DesainMovieReview"
         },
@@ -51,7 +51,7 @@ const Projects = () => {
                 <h2 className="text-4xl md:text-6xl font-bold">Featured Projects</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto">
                 {projects.map((project, index) => (
                     <a
                         key={index}
