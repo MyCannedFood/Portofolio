@@ -10,7 +10,7 @@ const Hero = () => {
 
                 <div className="grid md:grid-cols-2 gap-12 mt-12">
                     <p className="text-xl text-gray-400 leading-relaxed">
-Third-year Computer Science at Universitas Multimedia Nusantara, I have cultivated a dual interest in Software Engineering and Cybersecurity. Currently, I am focused on mastering secure coding practices and full-stack development, with a growing interest in penetration testing and network defense. I am eager to apply my academic foundation to real-world challenges through a professional internship
+Third-year Computer Science student based in Indonesia <br/><br/> I have cultivated a dual interest in Backend engineering and Cybersecurity. <br/><br/> Currently, I am trying to learn more about cybersecurity
                     </p>
                     <div className="flex flex-col gap-4 items-start">
                         <a href="#projects" className="group flex items-center gap-2 text-white border-b border-white pb-1 hover:text-purple-400 hover:border-purple-400 transition-colors">

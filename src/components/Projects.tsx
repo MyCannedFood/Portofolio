@@ -6,7 +6,7 @@ const Projects = () => {
             title: "Lions Website",
             description: "Member management platform with custom admin dashboard.",
             tech: ["Laravel", "MySQL", "Tailwind"],
-            className: "md:col-span-2 md:row-span-2",
+            className: "xl:col-span-2 xl:row-span-1",
             color: "bg-blue-500/10",
             link: "https://github.com/Jopras21/UAS_WebPro_LIONS"
         },
@@ -14,7 +14,7 @@ const Projects = () => {
             title: "Cinematch",
             description: "Personalized movie recommendation Android app.",
             tech: ["Kotlin", "Firebase", "Jetpack Compose"],
-            className: "md:col-span-1 md:row-span-2",
+            className: "xl:col-span-1 xl:row-span-1",
             color: "bg-purple-500/10",
             link: "https://github.com/calvinnnleo/DesainMovieReview"
         },
@@ -22,7 +22,7 @@ const Projects = () => {
             title: "Task manager",
             description: "High-performance task manager in C.",
             tech: ["C"],
-            className: "md:col-span-1 md:row-span-1",
+            className: "xl:col-span-1 xl:row-span-1",
             color: "bg-pink-500/10",
             link: "https://github.com/MyCannedFood/MyList"
         },
@@ -30,7 +30,7 @@ const Projects = () => {
             title: "Ultimagz.com",
             description: "An independent campus media",
             tech: ["Cloudflare, Wordpress"],
-            className: "md:col-span-2 md:row-span-1",
+            className: "xl:col-span-2 xl:row-span-1",
             color: "bg-purple-500/10",
             link: "https://ultimagz.com/"
         },
@@ -38,7 +38,7 @@ const Projects = () => {
             title: "Fokus",
             description: "a Sub domain from Ultimagz.com",
             tech: ["Typescript", "React", "Next.js"],
-            className: "md:col-span-2 md:row-span-2",
+            className: "xl:col-span-2 xl:row-span-1",
             color: "bg-blue-500/10",
             link: "https://fokus.ultimagz.com/articles/sisi-muram-budaya-digital/"
         },
@@ -51,7 +51,7 @@ const Projects = () => {
                 <h2 className="text-4xl md:text-6xl font-bold">Featured Projects</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 auto-rows-auto">
                 {projects.map((project, index) => (
                     <a
                         key={index}
