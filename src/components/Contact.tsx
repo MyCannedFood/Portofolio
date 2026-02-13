@@ -2,16 +2,44 @@ import React, { useState } from 'react';
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-    const [submitted, setSubmitted] = useState(false);
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log(formData);
-        setSubmitted(true);
-        setTimeout(() => {
-            setFormData({ name: '', email: '', message: '' });
-            setSubmitted(false);
-        }, 3000);
+        setStatus('loading');
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    access_key: import.meta.env.VITE_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY_HERE',
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                    subject: `New Portfolio Contact from ${formData.name}`,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setStatus('success');
+                setFormData({ name: '', email: '', message: '' });
+                setTimeout(() => setStatus('idle'), 5000);
+            } else {
+                setStatus('error');
+                setErrorMessage(data.message || 'Failed to send message');
+                setTimeout(() => setStatus('idle'), 5000);
+            }
+        } catch (error) {
+            setStatus('error');
+            setErrorMessage('Network error. Please try again.');
+            setTimeout(() => setStatus('idle'), 5000);
+        }
     };
 
     return (
@@ -66,7 +94,7 @@ const Contact = () => {
                         </div>
 
                         {/* Form */}
-                        {!submitted ? (
+                        {status === 'idle' || status === 'loading' ? (
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 {/* Name Input */}
                                 <div>
@@ -81,6 +109,7 @@ const Contact = () => {
                                         className="w-full px-4 py-2 bg-[#161b22] border border-emerald-500/30 rounded text-emerald-400 focus:border-emerald-500 outline-none transition-colors font-mono"
                                         placeholder="John Doe"
                                         required
+                                        disabled={status === 'loading'}
                                     />
                                 </div>
 
@@ -97,6 +126,7 @@ const Contact = () => {
                                         className="w-full px-4 py-2 bg-[#161b22] border border-emerald-500/30 rounded text-emerald-400 focus:border-emerald-500 outline-none transition-colors font-mono"
                                         placeholder="john@example.com"
                                         required
+                                        disabled={status === 'loading'}
                                     />
                                 </div>
 
@@ -113,6 +143,7 @@ const Contact = () => {
                                         className="w-full px-4 py-2 bg-[#161b22] border border-emerald-500/30 rounded text-emerald-400 focus:border-emerald-500 outline-none transition-colors font-mono resize-none"
                                         placeholder="Your message here..."
                                         required
+                                        disabled={status === 'loading'}
                                     />
                                 </div>
 
@@ -121,16 +152,28 @@ const Contact = () => {
                                     <span className="text-emerald-400">$</span>
                                     <button
                                         type="submit"
-                                        className="px-6 py-2 bg-emerald-500 text-black font-semibold rounded hover:bg-emerald-400 transition-colors"
+                                        disabled={status === 'loading'}
+                                        className="px-6 py-2 bg-emerald-500 text-black font-semibold rounded hover:bg-emerald-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-                                        ./send_message.sh --execute
+                                        {status === 'loading' ? 'Sending...' : './send_message.sh --execute'}
                                     </button>
                                 </div>
+
+                                {/* Loading State */}
+                                {status === 'loading' && (
+                                    <div className="flex items-center gap-2 text-yellow-400">
+                                        <span className="animate-pulse">⟳</span>
+                                        <span>Processing request...</span>
+                                    </div>
+                                )}
                             </form>
-                        ) : (
+                        ) : status === 'success' ? (
                             <div className="space-y-2">
                                 <div className="text-emerald-400">
                                     ✓ Message sent successfully!
+                                </div>
+                                <div className="text-gray-400">
+                                    Email delivered to inbox.
                                 </div>
                                 <div className="text-gray-400">
                                     Process completed with exit code 0
@@ -139,6 +182,23 @@ const Contact = () => {
                                     <span className="text-emerald-400 mr-2">➜</span>
                                     <span className="text-cyan-400 mr-2">~</span>
                                     <span className="cursor-blink w-2 h-5 bg-emerald-400 inline-block"></span>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="space-y-2">
+                                <div className="text-red-400">
+                                    ✗ Error: Failed to send message
+                                </div>
+                                <div className="text-gray-400">
+                                    {errorMessage}
+                                </div>
+                                <div className="text-gray-400">
+                                    Process exited with code 1
+                                </div>
+                                <div className="flex mt-4">
+                                    <span className="text-red-400 mr-2">➜</span>
+                                    <span className="text-cyan-400 mr-2">~</span>
+                                    <span className="cursor-blink w-2 h-5 bg-red-400 inline-block"></span>
                                 </div>
                             </div>
                         )}
