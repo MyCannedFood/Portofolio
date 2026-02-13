@@ -6,35 +6,40 @@ const Projects = () => {
             description: "Member management platform with custom admin dashboard.",
             tech: ["Laravel", "MySQL", "Tailwind"],
             link: "https://github.com/Jopras21/UAS_WebPro_LIONS",
-            type: "web"
+            type: "web",
+            date: "Nov 2024 - Jan 2025"
         },
         {
             title: "Cinematch",
             description: "Personalized movie recommendation Android app.",
             tech: ["Kotlin", "Firebase", "Jetpack Compose"],
             link: "https://github.com/calvinnnleo/DesainMovieReview",
-            type: "mobile"
+            type: "mobile",
+            date: "Aug 2025 - Dec 2025"
         },
         {
             title: "Task manager",
-            description: "High-performance task manager in C.",
-            tech: ["C"],
+            description: "High-performance task manager in C++.",
+            tech: ["C++"],
             link: "https://github.com/MyCannedFood/MyList",
-            type: "system"
+            type: "system",
+            date: "Jan 2025 - Jan 2025"
         },
         {
             title: "Ultimagz.com",
             description: "An independent campus media",
             tech: ["Cloudflare", "Wordpress"],
             link: "https://ultimagz.com/",
-            type: "web"
+            type: "web",
+            date: "June 2025 - July 2025"
         },
         {
             title: "Fokus",
             description: "a Sub domain from Ultimagz.com",
             tech: ["Typescript", "React", "Next.js"],
             link: "https://fokus.ultimagz.com/articles/sisi-muram-budaya-digital/",
-            type: "web"
+            type: "web",
+            date: "Sep 2025 - Dec 2025"
         },
     ];
 
@@ -79,7 +84,7 @@ const Projects = () => {
                                     <div className="flex items-start gap-3 mb-2">
                                         <span className="text-emerald-400">drwxr-xr-x</span>
                                         <span className="text-yellow-400 flex-shrink-0">
-                                            {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                                            {project.date}
                                         </span>
                                         <span className="text-cyan-400 font-semibold group-hover:text-emerald-400 transition-colors flex-1">
                                             {project.title}/
