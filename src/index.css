@@ -1,28 +1,57 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @theme {
-    --font-sans: 'Inter', sans-serif;
-    --color-primary: #a855f7;
+    --font-sans: 'JetBrains Mono', monospace;
+    --font-mono: 'JetBrains Mono', monospace;
+    --color-primary: #10b981;
+    --color-terminal-bg: #0a0e14;
+    --color-terminal-text: #b3b1ad;
+    --color-terminal-green: #10b981;
+    --color-terminal-cyan: #06b6d4;
+    --color-terminal-yellow: #fbbf24;
+    --color-terminal-red: #ef4444;
 }
 
 html {
     scroll-behavior: smooth;
+    background: #0a0e14;
 }
 
-/* Optional: Custom scrollbar for webkit */
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background: #0a0e14;
+}
+
+/* Terminal-style scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #030712;
+    background: #0a0e14;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #374151;
-    border-radius: 4px;
+    background: #10b981;
+    border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #4b5563;
+    background: #059669;
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+    animation: blink 1s infinite;
+}
+
+/* Terminal glow effect */
+.terminal-glow {
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
 }

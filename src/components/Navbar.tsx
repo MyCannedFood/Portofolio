@@ -30,37 +30,53 @@ const Navbar = () => {
     return (
         <>
             {/* Desktop Sidebar */}
-            <nav className="hidden md:flex flex-col fixed left-0 top-0 h-screen w-64 bg-gray-950 border-r border-gray-900 z-50 p-8 gap-20">
+            <nav className="hidden md:flex flex-col fixed left-0 top-0 h-screen w-64 bg-[#0d1117] border-r border-emerald-500/20 z-50 p-8 gap-20">
                 <div>
-                    <h1 className="text-2xl font-bold text-white mb-2">Portfolio</h1>
-                    <p className="text-gray-500 text-sm">Full Stack Developer</p>
+                    <div className="font-mono">
+                        <div className="flex items-center gap-2 mb-2">
+                            <span className="text-emerald-400 text-xl">➜</span>
+                            <h1 className="text-xl font-bold text-emerald-400">portfolio</h1>
+                        </div>
+                        <p className="text-gray-500 text-xs ml-7">sagara@terminal:~</p>
+                    </div>
                 </div>
 
-                <div className="flex flex-col space-y-6">
+                <div className="flex flex-col space-y-4 font-mono text-sm">
                     {navItems.map((item) => (
                         <a
                             key={item.id}
                             href={`#${item.id}`}
-                            className={`text-lg transition-colors duration-300 ${activeSection === item.id ? 'text-white font-medium pl-4 border-l-2 border-purple-500' : 'text-gray-500 hover:text-gray-300'
+                            className={`flex items-center gap-3 transition-colors duration-300 py-2 px-3 rounded ${activeSection === item.id
+                                    ? 'text-emerald-400 bg-emerald-500/10 border-l-2 border-emerald-500'
+                                    : 'text-gray-500 hover:text-gray-300 hover:bg-gray-800/30'
                                 }`}
                         >
-                            {item.label}
+                            <span>{item.label}</span>
                         </a>
                     ))}
+                </div>
+
+                {/* System Info */}
+                <div className="mt-auto font-mono text-xs text-gray-600 space-y-1">
+                    <div>uptime: {new Date().getFullYear()}</div>
+                    <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span>online</span>
+                    </div>
                 </div>
             </nav>
 
             {/* Mobile Bottom Bar */}
-            <nav className="md:hidden fixed bottom-0 left-0 w-full bg-gray-950/90 backdrop-blur-lg border-t border-gray-800 z-50 px-6 py-4">
-                <div className="flex justify-between items-center">
+            <nav className="md:hidden fixed bottom-0 left-0 w-full bg-[#0d1117]/95 backdrop-blur-lg border-t border-emerald-500/20 z-50 px-6 py-4">
+                <div className="flex justify-between items-center font-mono text-xs">
                     {navItems.map((item) => (
                         <a
                             key={item.id}
                             href={`#${item.id}`}
-                            className={`text-sm ${activeSection === item.id ? 'text-purple-400 font-medium' : 'text-gray-500'
+                            className={`flex flex-col items-center gap-1 ${activeSection === item.id ? 'text-emerald-400' : 'text-gray-500'
                                 }`}
                         >
-                            {item.label}
+                            <span>{item.label}</span>
                         </a>
                     ))}
                 </div>
