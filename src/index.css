@@ -1,50 +1,85 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
+/* Catppuccin Mocha Theme */
 @theme {
     --font-sans: 'JetBrains Mono', monospace;
     --font-mono: 'JetBrains Mono', monospace;
-    --color-primary: #10b981;
-    --color-terminal-bg: #0a0e14;
-    --color-terminal-text: #b3b1ad;
-    --color-terminal-green: #10b981;
-    --color-terminal-cyan: #06b6d4;
-    --color-terminal-yellow: #fbbf24;
-    --color-terminal-red: #ef4444;
+
+    /* Catppuccin Mocha Colors */
+    --color-base: #1e1e2e;
+    /* Base background */
+    --color-mantle: #181825;
+    /* Darker background */
+    --color-crust: #11111b;
+    /* Darkest background */
+    --color-text: #cdd6f4;
+    /* Main text */
+    --color-subtext: #a6adc8;
+    /* Secondary text */
+    --color-overlay: #6c7086;
+    /* Muted text */
+
+    /* Accent colors */
+    --color-rosewater: #f5e0dc;
+    --color-flamingo: #f2cdcd;
+    --color-pink: #f5c2e7;
+    --color-mauve: #cba6f7;
+    /* Purple */
+    --color-red: #f38ba8;
+    --color-maroon: #eba0ac;
+    --color-peach: #fab387;
+    /* Orange */
+    --color-yellow: #f9e2af;
+    --color-green: #a6e3a1;
+    /* Green */
+    --color-teal: #94e2d5;
+    --color-sky: #89dceb;
+    --color-sapphire: #74c7ec;
+    --color-blue: #89b4fa;
+    --color-lavender: #b4befe;
 }
 
 html {
     scroll-behavior: smooth;
-    background: #0a0e14;
+    background: #1e1e2e;
 }
 
 body {
     font-family: 'JetBrains Mono', monospace;
-    background: #0a0e14;
+    background: #1e1e2e;
 }
 
-/* Terminal-style scrollbar */
+/* Catppuccin-style scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0a0e14;
+    background: #1e1e2e;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #10b981;
+    background: #cba6f7;
     border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #059669;
+    background: #b4befe;
 }
 
 /* Blinking cursor animation */
 @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
 }
 
 .cursor-blink {
@@ -53,5 +88,5 @@ body {
 
 /* Terminal glow effect */
 .terminal-glow {
-    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    text-shadow: 0 0 10px rgba(203, 166, 247, 0.5);
 }

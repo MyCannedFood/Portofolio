@@ -16,15 +16,9 @@ cd Portofolio
 npm install
 ```
 
-3. Set up environment variables:
-```bash
-cp .env.example .env
-```
-Then edit `.env` and add your Web3Forms access key. Get a free key at [web3forms.com](https://web3forms.com).
-
-4. Start the development server:
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-5. Open your browser and navigate to `http://localhost:5173`
+4. Open your browser and navigate to `http://localhost:5173`
