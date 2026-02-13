@@ -28,7 +28,7 @@ const Projects = () => {
         {
             title: "Ultimagz.com",
             description: "An independent campus media",
-            tech: ["Cloudflare", "Wordpress"],
+            tech: ["Cloudflare", "Wordpress", "MySQL",],
             link: "https://ultimagz.com/",
             type: "web",
             date: "June 2025 - July 2025"

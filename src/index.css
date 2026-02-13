@@ -90,3 +90,124 @@ body {
 .terminal-glow {
     text-shadow: 0 0 10px rgba(203, 166, 247, 0.5);
 }
+
+/* CRT Overlay Effect */
+.crt-overlay {
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg,
+            rgba(255, 0, 0, 0.03),
+            rgba(0, 255, 0, 0.01),
+            rgba(0, 0, 255, 0.03));
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none;
+}
+
+/* CRT Flicker Effect */
+@keyframes crt-flicker {
+    0% {
+        opacity: 0.98;
+    }
+
+    5% {
+        opacity: 0.95;
+    }
+
+    10% {
+        opacity: 0.99;
+    }
+
+    15% {
+        opacity: 0.94;
+    }
+
+    20% {
+        opacity: 0.99;
+    }
+
+    25% {
+        opacity: 0.96;
+    }
+
+    30% {
+        opacity: 0.99;
+    }
+
+    35% {
+        opacity: 0.95;
+    }
+
+    40% {
+        opacity: 0.99;
+    }
+
+    45% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.98;
+    }
+
+    55% {
+        opacity: 0.95;
+    }
+
+    60% {
+        opacity: 0.99;
+    }
+
+    65% {
+        opacity: 0.94;
+    }
+
+    70% {
+        opacity: 0.99;
+    }
+
+    75% {
+        opacity: 0.96;
+    }
+
+    80% {
+        opacity: 0.99;
+    }
+
+    85% {
+        opacity: 0.95;
+    }
+
+    90% {
+        opacity: 0.99;
+    }
+
+    95% {
+        opacity: 0.97;
+    }
+
+    100% {
+        opacity: 0.99;
+    }
+}
+
+.crt-flicker {
+    animation: crt-flicker 0.15s infinite;
+    background: rgba(18, 16, 16, 0.01);
+}
+
+/* Custom Scrollbar for Terminal */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cba6f733;
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cba6f766;
+}

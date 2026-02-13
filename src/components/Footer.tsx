@@ -5,7 +5,7 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="font-mono text-xs flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="flex items-center gap-4">
-                        <span className="text-mauve">sagara@portfolio</span>
+                        <span className="text-mauve">sagara</span>
                         <span className="text-overlay">|</span>
                         <span>© {new Date().getFullYear()}</span>
                     </div>

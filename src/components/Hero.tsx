@@ -84,14 +84,6 @@ const Hero = () => {
 
                         {/* Action Commands */}
                         <div className="space-y-3">
-                            <div className="flex items-center gap-3">
-                                <span className="text-mauve">$</span>
-                                <a href="#projects" className="text-text hover:text-mauve transition-colors underline decoration-dotted">
-                                    ./view_projects.sh
-                                </a>
-                                <span className="text-overlay"># View my work</span>
-                            </div>
-
                             {/* Social Links */}
                             <div className="border-t border-mauve/20 pt-3 mt-4">
                                 <div className="text-overlay text-xs mb-2"># Connect with me:</div>
