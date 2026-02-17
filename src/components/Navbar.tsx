@@ -1,52 +1,51 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+/**
+ * Navbar Component
+ * Handles the application's navigation, including a fixed sidebar on desktop
+ * and a bottom navigation bar on mobile. Implements scroll-spying for active sections.
+ */
 const Navbar = () => {
+    // --- State & Routing ---
     const [activeSection, setActiveSection] = useState('home');
     const location = useLocation();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (location.pathname !== '/') return;
-
-            const sections = ['home'];
-            const scrollPosition = window.scrollY + 200;
-
-            for (const section of sections) {
-                const element = document.getElementById(section);
-                if (element && element.offsetTop <= scrollPosition && (element.offsetTop + element.offsetHeight) > scrollPosition) {
-                    setActiveSection(section);
-                }
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [location.pathname]);
-
+    /**
+     * Active State Synchronization
+     * Ensures the correct navigation item is highlighted based on the 
+     * current URL path or hash fragment.
+     */
     useEffect(() => {
         if (location.pathname === '/terminal') {
             setActiveSection('terminal');
         } else if (location.pathname === '/' && !location.hash) {
             setActiveSection('home');
         } else if (location.hash) {
+            // Extract section ID from hash (e.g., '#projects' -> 'projects')
             setActiveSection(location.hash.substring(1));
         }
     }, [location]);
 
+    // Navigation Menu Configuration
     const navItems = [
         { id: 'home', label: 'Home', path: '/' },
-        { id: 'projects', label: 'Projects', path: '/projects' },
         { id: 'terminal', label: 'Terminal', path: '/terminal' },
     ];
 
+    /**
+     * Click Handler for Navigation Items
+     * Handles smooth scrolling for internal section links on the homepage.
+     */
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: typeof navItems[0]) => {
+        // If we're already on the home page and clicking a hash link
         if (location.pathname === '/' && item.path.startsWith('/#')) {
             const id = item.id;
             const element = document.getElementById(id);
             if (element) {
                 e.preventDefault();
                 element.scrollIntoView({ behavior: 'smooth' });
+                // Update URL without reloading
                 window.history.pushState(null, '', item.path);
                 setActiveSection(item.id);
             }
@@ -55,8 +54,9 @@ const Navbar = () => {
 
     return (
         <>
-            {/* Desktop Sidebar */}
+            {/* --- Desktop Sidebar Navigation --- */}
             <nav className="hidden md:flex flex-col fixed left-0 top-0 h-screen w-64 bg-mantle border-r border-mauve/20 z-50 p-8 gap-20">
+                {/* Branding / Logo */}
                 <div>
                     <div className="font-mono">
                         <div className="flex items-center gap-2 mb-2">
@@ -67,6 +67,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
+                {/* Nav Links */}
                 <div className="flex flex-col space-y-4 font-mono text-sm">
                     {navItems.map((item) => (
                         <Link
@@ -83,7 +84,7 @@ const Navbar = () => {
                     ))}
                 </div>
 
-                {/* System Info */}
+                {/* Status Bar / System Info */}
                 <div className="mt-auto font-mono text-xs text-overlay space-y-1">
                     <div>uptime: {new Date().getFullYear()}</div>
                     <div className="flex items-center gap-2">
@@ -93,8 +94,8 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* Mobile Bottom Bar */}
-            <nav className="md:hidden fixed bottom-0 left-0 w-full bg-mantle/95 backdrop-blur-lg border-t border-mauve/20 z-50 px-6 py-4">
+            {/* --- Mobile Bottom Navigation Bar --- */}
+            <nav className="md:hidden fixed top-0 left-0 w-full bg-mantle/95 backdrop-blur-lg border-t border-mauve/20 z-50 px-6 py-4">
                 <div className="flex justify-between items-center font-mono text-xs">
                     {navItems.map((item) => (
                         <Link
@@ -114,3 +115,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
